@@ -260,12 +260,25 @@ namespace Microsoft.MinIoC.Tests
         [TestMethod]
         public void GetServiceMissingDependencyThrows()
         {
+            Bar b1=null;
+            Bar b12=null;
+            Bar b2 = null;
+            Bar b22 = null;
             using (var container = new Container())
             {
                 container.Register<Bar>();
-
+                b1 = (Bar)container.GetService(typeof(Bar));
+                b12 = (Bar)container.GetService(typeof(Bar));
                 Assert.ThrowsException<KeyNotFoundException>(() => container.GetService(typeof(Bar)));
             }
+            using (var container = new Container())
+            {
+                container.Register<Bar>();
+                b2 = (Bar)container.GetService(typeof(Bar));
+                b22 = (Bar)container.GetService(typeof(Bar));
+                Assert.ThrowsException<KeyNotFoundException>(() => container.GetService(typeof(Bar)));
+            }
+
         }
 
         #region Types used for tests

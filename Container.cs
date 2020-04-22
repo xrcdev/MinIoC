@@ -9,67 +9,89 @@ using System.Reflection;
 
 namespace Microsoft.MinIoC
 {
+
     /// <summary>
+    /// 控制容器的反转处理已注册类型的依赖项注入
     /// Inversion of control container handles dependency injection for registered types
     /// </summary>
-    class Container : Container.IScope
+    public class Container : Container.IScope
     {
         #region Public interfaces
         /// <summary>
-        /// Represents a scope in which per-scope objects are instantiated a single time
+        /// 表示某个时刻的范围对象的作用域
         /// </summary>
         public interface IScope : IDisposable, IServiceProvider
         {
         }
 
         /// <summary>
-        /// IRegisteredType is return by Container.Register and allows further configuration for the registration
+        /// 代表注册的类型
+        /// Container.Register 方法 返回这个类型,并可以允许进一步配置注册
         /// </summary>
         public interface IRegisteredType
         {
             /// <summary>
-            /// Make registered type a singleton
+            /// 使注册类型为单例
             /// </summary>
             void AsSingleton();
 
             /// <summary>
-            /// Make registered type a per-scope type (single instance within a Scope)
+            /// 将注册类型设为一个作用域类型（范围内的单个实例）
             /// </summary>
             void PerScope();
         }
         #endregion
 
-        // Map of registered types
+        /// <summary>
+        /// 已注册类型的映射
+        /// </summary>
         private readonly Dictionary<Type, Func<ILifetime, object>> _registeredTypes = new Dictionary<Type, Func<ILifetime, object>>();
 
-        // Lifetime management
+        /// <summary>
+        /// 生命周期管理
+        /// </summary>
         private readonly ContainerLifetime _lifetime;
 
         /// <summary>
         /// Creates a new instance of IoC Container
         /// </summary>
-        public Container() => _lifetime = new ContainerLifetime(t => _registeredTypes[t]);
+        public Container()
+        {
+            _lifetime = new ContainerLifetime(GetRegisteredTypes);
+        }
+
+        Func<ILifetime, object> GetRegisteredTypes(Type t)
+        {
+            Console.WriteLine("aa" + (((object)t != null) ? t.ToString() : null));
+            return _registeredTypes[t];
+        }
 
         /// <summary>
-        /// Registers a factory function which will be called to resolve the specified interface
+        ///注册工厂函数，将调用该函数来解析指定的接口
         /// </summary>
         /// <param name="interface">Interface to register</param>
         /// <param name="factory">Factory function</param>
         /// <returns></returns>
         public IRegisteredType Register(Type @interface, Func<object> factory)
-            => RegisterType(@interface, _ => factory());
+        {
+            return RegisterType(@interface, _ => factory());
+        }
 
         /// <summary>
-        /// Registers an implementation type for the specified interface
+        /// 注册指定接口的实现类型
         /// </summary>
         /// <param name="interface">Interface to register</param>
         /// <param name="implementation">Implementing type</param>
         /// <returns></returns>
         public IRegisteredType Register(Type @interface, Type implementation)
-            => RegisterType(@interface, FactoryFromType(implementation));
+        {
+            return RegisterType(@interface, FactoryFromType(implementation));
+        }
 
         private IRegisteredType RegisterType(Type itemType, Func<ILifetime, object> factory)
-            => new RegisteredType(itemType, f => _registeredTypes[itemType] = f, factory);
+        {
+            return new RegisteredType(itemType, f => _registeredTypes[itemType] = f, factory);
+        }
 
         /// <summary>
         /// Returns the object registered for the given type, if registered
@@ -92,7 +114,7 @@ namespace Microsoft.MinIoC
         /// Creates a new scope
         /// </summary>
         /// <returns>Scope object</returns>
-        public IScope CreateScope() => new ScopeLifetime(_lifetime);
+        public IScope CreateScope() => new ScopeLifetimeMgr(_lifetime);
 
         /// <summary>
         /// Disposes any <see cref="IDisposable"/> objects owned by this container.
@@ -100,23 +122,45 @@ namespace Microsoft.MinIoC
         public void Dispose() => _lifetime.Dispose();
 
         #region Lifetime management
-        // ILifetime management adds resolution strategies to an IScope
+        /// <summary>
+        /// 给IScope对象提供生命周期管理策略
+        /// </summary>
         interface ILifetime : IScope
         {
+            /// <summary>
+            /// 获取一个单例对象
+            /// </summary>
+            /// <param name="type"></param>
+            /// <param name="factory"></param>
+            /// <returns></returns>
             object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory);
 
+            /// <summary>
+            /// 获取一个作用域对象
+            /// </summary>
+            /// <param name="type"></param>
+            /// <param name="factory"></param>
+            /// <returns></returns>
             object GetServicePerScope(Type type, Func<ILifetime, object> factory);
         }
 
-        // ObjectCache provides common caching logic for lifetimes
+        /// <summary>
+        /// 提供终身的缓存逻辑,添加或者获取,abstract
+        /// </summary>
         abstract class ObjectCache
         {
-            // Instance cache
+            /// <summary>
+            /// 对象实例的缓存
+            /// </summary>
             private readonly ConcurrentDictionary<Type, object> _instanceCache = new ConcurrentDictionary<Type, object>();
 
-            // Get from cache or create and cache object
+            /// <summary>
+            /// 添加或者获取缓存对象
+            /// </summary>
             protected object GetCached(Type type, Func<ILifetime, object> factory, ILifetime lifetime)
-                => _instanceCache.GetOrAdd(type, _ => factory(lifetime));
+            {
+                return _instanceCache.GetOrAdd(type, _ => factory(lifetime));
+            }
 
             public void Dispose()
             {
@@ -125,47 +169,91 @@ namespace Microsoft.MinIoC
             }
         }
 
-        // Container lifetime management
+        /// <summary>
+        /// 容器寿命管理
+        /// </summary>
         class ContainerLifetime : ObjectCache, ILifetime
         {
-            // Retrieves the factory functino from the given type, provided by owning container
+            /// <summary>
+            /// 获取给定类型中检索构造函数,由 包含它的容器提供
+            /// 使用的数据集合是 Container 中的 _registeredTypes
+            /// </summary>
             public Func<Type, Func<ILifetime, object>> GetFactory { get; private set; }
 
-            public ContainerLifetime(Func<Type, Func<ILifetime, object>> getFactory) => GetFactory = getFactory;
+            public ContainerLifetime(Func<Type, Func<ILifetime, object>> getFactory)
+            {
+                GetFactory = getFactory;
+            }
 
-            public object GetService(Type type) => GetFactory(type)(this);
+            public object GetService(Type type)
+            {
+                Func<ILifetime, object> factory = GetFactory(type);
+                return factory(this);
+            }
 
-            // Singletons get cached per container
+            /// <summary>
+            /// 单例模式 获取缓存对象
+            /// </summary>
+            /// <param name="type"></param>
+            /// <param name="factory"></param>
+            /// <returns></returns>
             public object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory)
-                => GetCached(type, factory, this);
+            {
+                return GetCached(type, factory, this);
+            }
 
-            // At container level, per-scope items are equivalent to singletons
+            /// <summary>
+            /// // 获取作用域内的缓存对象,在容器的级别范围内,对象是单例的
+            /// At container level, per-scope items are equivalent to singletons
+            /// </summary>
+            /// <param name="type"></param>
+            /// <param name="factory"></param>
+            /// <returns></returns>
             public object GetServicePerScope(Type type, Func<ILifetime, object> factory)
-                => GetServiceAsSingleton(type, factory);
+            {
+                return GetServiceAsSingleton(type, factory);
+            }
         }
 
-        // Per-scope lifetime management
-        class ScopeLifetime : ObjectCache, ILifetime
+        /// <summary>
+        /// 作用域管理
+        /// </summary>
+        class ScopeLifetimeMgr : ObjectCache, ILifetime
         {
             // Singletons come from parent container's lifetime
             private readonly ContainerLifetime _parentLifetime;
 
-            public ScopeLifetime(ContainerLifetime parentContainer) => _parentLifetime = parentContainer;
+            public ScopeLifetimeMgr(ContainerLifetime parentContainer)
+            {
+                _parentLifetime = parentContainer;
+            }
 
-            public object GetService(Type type) => _parentLifetime.GetFactory(type)(this);
+            public object GetService(Type type)
+            {
+                return _parentLifetime.GetFactory(type)(this);
+            }
 
-            // Singleton resolution is delegated to parent lifetime
+            // 单例解决方案委托给父辈的生命周期
             public object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory)
-                => _parentLifetime.GetServiceAsSingleton(type, factory);
+            {
+                return _parentLifetime.GetServiceAsSingleton(type, factory);
+            }
 
             // Per-scope objects get cached
             public object GetServicePerScope(Type type, Func<ILifetime, object> factory)
-                => GetCached(type, factory, this);
+            {
+                return GetCached(type, factory, this);
+            }
         }
         #endregion
 
         #region Container items
-        // Compiles a lambda that calls the given type's first constructor resolving arguments
+        /// <summary>
+        /// 编译一个lambda，该lambda调用给定类型的第一个构造函数来解析参数
+        /// Compiles a lambda that calls the given type's first constructor resolving arguments
+        /// </summary>
+        /// <param name="itemType"></param>
+        /// <returns></returns>
         private static Func<ILifetime, object> FactoryFromType(Type itemType)
         {
             // Get first constructor for the type
@@ -219,7 +307,7 @@ namespace Microsoft.MinIoC
     }
 
     /// <summary>
-    /// Extension methods for Container
+    /// 容器的扩展方法
     /// </summary>
     static class ContainerExtensions
     {
@@ -231,7 +319,9 @@ namespace Microsoft.MinIoC
         /// <param name="type">Implementing type</param>
         /// <returns>IRegisteredType object</returns>
         public static Container.IRegisteredType Register<T>(this Container container, Type type)
-            => container.Register(typeof(T), type);
+        {
+            return container.Register(typeof(T), type);
+        }
 
         /// <summary>
         /// Registers an implementation type for the specified interface
@@ -242,7 +332,9 @@ namespace Microsoft.MinIoC
         /// <returns>IRegisteredType object</returns>
         public static Container.IRegisteredType Register<TInterface, TImplementation>(this Container container)
             where TImplementation : TInterface
-            => container.Register(typeof(TInterface), typeof(TImplementation));
+        {
+            return container.Register(typeof(TInterface), typeof(TImplementation));
+        }
 
         /// <summary>
         /// Registers a factory function which will be called to resolve the specified interface
@@ -252,23 +344,30 @@ namespace Microsoft.MinIoC
         /// <param name="factory">Factory method</param>
         /// <returns>IRegisteredType object</returns>
         public static Container.IRegisteredType Register<T>(this Container container, Func<T> factory)
-            => container.Register(typeof(T), () => factory());
+        {
+            return container.Register(typeof(T), () => factory());
+        }
 
         /// <summary>
-        /// Registers a type
+        /// 注册一个类型
         /// </summary>
         /// <param name="container">This container instance</param>
         /// <typeparam name="T">Type to register</typeparam>
         /// <returns>IRegisteredType object</returns>
         public static Container.IRegisteredType Register<T>(this Container container)
-            => container.Register(typeof(T), typeof(T));
+        {
+            return container.Register(typeof(T), typeof(T));
+        }
 
         /// <summary>
-        /// Returns an implementation of the specified interface
+        /// 返回指定接口的实现(类)
         /// </summary>
         /// <typeparam name="T">Interface type</typeparam>
         /// <param name="scope">This scope instance</param>
         /// <returns>Object implementing the interface</returns>
-        public static T Resolve<T>(this Container.IScope scope) => (T)scope.GetService(typeof(T));
+        public static T Resolve<T>(this Container.IScope scope)
+        {
+            return (T)scope.GetService(typeof(T));
+        }
     }
 }
