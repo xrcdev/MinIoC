@@ -337,9 +337,11 @@ namespace ConsoleApp2_FW
             private readonly Func<IObjectProvider, object> _constructor;
 
             /// <summary>
-            /// Set_DicRegisteredTypesWithValue, object表示的是构造函数
+            /// 用于保存生成对象的方法,是否使用缓存
+            /// Set_DicRegisteredTypesWithValue, object 始终表示的是构造函数
             /// </summary>
             private readonly Action<Func<IObjectProvider, object>> _Set_DicRegisteredTypesWithValue;
+
 
             public RegisteredType(Type itemType, Action<Func<IObjectProvider, object>> registerFactory, Func<IObjectProvider, object> constructor)
             {
