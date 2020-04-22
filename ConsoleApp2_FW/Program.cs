@@ -92,7 +92,7 @@ namespace ConsoleApp2_FW
             var a4 = container1.Resolve<IA>();
             Console.WriteLine($"■ {nameof(a1)} object.ReferenceEquals {nameof(a4)} :".PadRight(35, '\0') + (object.ReferenceEquals(a1, a4)).ToString());
             Console.WriteLine($"{Environment.NewLine}");
-           
+
             container1.Register<IB>(typeof(B)).AsSingleton();//▲
             var b1 = container1.Resolve<IB>();
             using (var bScope = container1.CreateScope())
@@ -212,3 +212,42 @@ namespace ConsoleApp2_FW
     }
     #endregion
 }
+
+
+
+/*
+ 
+     类型:ConsoleApp2_FW.IFoo,对应的构造函数:new Foo(),添加到词典:
+从词典获取到类型:ConsoleApp2_FW.IFoo,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,ConsoleApp2_FW.Foo]:
+■ foo1 object.ReferenceEquals foo2 :False
+从词典获取到类型:ConsoleApp2_FW.IFoo,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,ConsoleApp2_FW.Foo]:
+■ foo2 object.ReferenceEquals foo3 :False
+■ foo1 object.ReferenceEquals foo4 :False
+
+
+类型:ConsoleApp2_FW.IA,对应的构造函数:new A(),添加到词典:
+类型:ConsoleApp2_FW.IA,对应的构造函数:GetObjPerScope,添加到词典:
+△ 实例缓存字典中,新增对象
+从词典获取到类型:ConsoleApp2_FW.IA,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,System.Object]:
+△ 实例缓存字典中,新增对象
+■ a1 object.ReferenceEquals a2 :   False
+从词典获取到类型:ConsoleApp2_FW.IA,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,System.Object]:
+▲ 从实例缓存字典中,获取到对象
+■ a2 object.ReferenceEquals a3 :   True
+▲ 从实例缓存字典中,获取到对象
+■ a1 object.ReferenceEquals a4 :   True
+
+
+类型:ConsoleApp2_FW.IB,对应的构造函数:new B(),添加到词典:
+类型:ConsoleApp2_FW.IB,对应的构造函数:GetObjAsSingleton,添加到词典:
+△ 实例缓存字典中,新增对象
+从词典获取到类型:ConsoleApp2_FW.IB,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,System.Object]:
+▲ 从实例缓存字典中,获取到对象
+■ b1 object.ReferenceEquals b2 :   True
+从词典获取到类型:ConsoleApp2_FW.IB,对应的构造函数System.Func`2[ConsoleApp2_FW.Container+IObjectProvider,System.Object]:
+▲ 从实例缓存字典中,获取到对象
+■ b2 object.ReferenceEquals b3 :   True
+▲ 从实例缓存字典中,获取到对象
+■ b1 object.ReferenceEquals b4 :   True
+     
+     */
