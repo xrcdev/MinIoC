@@ -103,7 +103,7 @@ namespace ConsoleApp2_FW
         {
             void Set_DicRegisteredTypesWithValue(Func<IObjectProvider, object> func)
             {
-                Console.WriteLine($"类型:{(((object)itemType != null) ? itemType.ToString() : null)},对应的构造函数:{func.Method.Name},添加到词典:");
+                Console.WriteLine($"类型:{(((object)itemType != null) ? itemType.ToString() : null)},对应的构造函数:{func.Method.Name},更新到词典:");
                 _RegisteredTypeDic[itemType] = func;
             }
             //return new RegisteredType(itemType, f => _registeredTypesG[itemType] = f, constructor);
@@ -345,7 +345,7 @@ namespace ConsoleApp2_FW
             {
                 _itemType = itemType;
                 _constructor = constructor;
-                _Set_DicRegisteredTypesWithValue = registerFactory;
+                _Set_DicRegisteredTypesWithValue = registerFactory;//constructor
                 //注册到 Container.DicRegisteredTypesGlobal
                 registerFactory(_constructor);
             }
