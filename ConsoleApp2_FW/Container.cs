@@ -15,8 +15,8 @@ namespace ConsoleApp2_FW
     {
         #region 属性 _DicRegisteredTypesGlobal, _Lifetime
         /// <summary>
-        /// 保存 已注册类型和构造函数的映射
-        /// 构造函数可以是: constructor,GetObjPerScope,GetObjAsSingleton
+        /// 保存 已注册类型和构造函数的映射,
+        /// value 可以是: IObjectProvider=>constructor(没有缓存处理,每次是新的对象), IObjectProvider=> GetObjPerScope (作用域缓存), IObjectProvider=> GetObjAsSingleton (全局的缓存处理)
         /// </summary>
         private readonly Dictionary<Type, Func<IObjectProvider, object>> _RegisteredTypeDic = new Dictionary<Type, Func<IObjectProvider, object>>();
 
@@ -354,6 +354,7 @@ namespace ConsoleApp2_FW
             {
                 _Set_DicRegisteredTypesWithValue(GetObjAsSingleton);
             }
+
             /// <summary>
             /// Func 
             /// </summary>
