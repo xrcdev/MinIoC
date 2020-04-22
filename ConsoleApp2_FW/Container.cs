@@ -10,21 +10,20 @@ namespace ConsoleApp2_FW
 {
     /// <summary>
     /// 控制容器的反转处理已注册类型的依赖项注入
-    /// Inversion of control container handles dependency injection for registered types
     /// </summary>
-    public class Container : Container.IScope
+    public class Container : Container.IBaseObjectProvider
     {
         #region 属性 _DicRegisteredTypesGlobal, _Lifetime
         /// <summary>
-        /// 已注册类型的映射
+        /// 保存 已注册类型和构造函数的映射
+        /// 构造函数可以是: constructor,GetObjPerScope,GetObjAsSingleton
         /// </summary>
-        private readonly Dictionary<Type, Func<ILifetime, object>> _DicRegisteredTypesGlobal = new Dictionary<Type, Func<ILifetime, object>>();
+        private readonly Dictionary<Type, Func<IObjectProvider, object>> _RegisteredTypeDic = new Dictionary<Type, Func<IObjectProvider, object>>();
 
         /// <summary>
         /// 提供生命周期管理; 继承ObjectCache, ILifetime
         /// </summary>
-        private readonly ContainerLifetime _Lifetime;
-
+        private readonly SingleObjectProvider _SingleObjectProvider;
         #endregion
 
         /// <summary>
@@ -32,14 +31,54 @@ namespace ConsoleApp2_FW
         /// </summary>
         public Container()
         {
-            _Lifetime = new ContainerLifetime(Set_DicRegisteredTypesGlobalByKey);
+            _SingleObjectProvider = new SingleObjectProvider(GetConstructorFromDicByType);
         }
 
         #region 实例方法
 
-        #region Register
+        Func<IObjectProvider, object> GetConstructorFromDicByType(Type t)
+        {
+            Console.WriteLine($"从词典获取到类型:{(((object)t != null) ? t.ToString() : null)},对应的构造函数{_RegisteredTypeDic[t].ToString()}:");
+            return _RegisteredTypeDic[t];
+        }
+
         /// <summary>
-        ///注册工厂函数，将调用该函数来解析指定的接口
+        /// Returns the object registered for the given type, if registered
+        /// </summary>
+        /// <param name="type">Type as registered with the container</param>
+        /// <returns>Instance of the registered type, if registered; otherwise <see langword="null"/></returns>
+        public object GetService(Type type)
+        {
+            Func<IObjectProvider, object> registeredType;
+
+            if (!_RegisteredTypeDic.TryGetValue(type, out registeredType))
+            {
+                return null;
+            }
+
+            return registeredType(_SingleObjectProvider);
+        }
+
+        /// <summary>
+        /// Creates a new scope
+        /// </summary>
+        /// <returns>Scope object</returns>
+        public IBaseObjectProvider CreateScope()
+        {
+            return new ScopeObjectProvider(_SingleObjectProvider);
+        }
+
+        /// <summary>
+        /// Disposes any <see cref="IDisposable"/> objects owned by this container.
+        /// </summary>
+        public void Dispose()
+        {
+            _SingleObjectProvider.Dispose();
+        }
+
+        #region Register 相关
+        /// <summary>
+        /// 注册工厂函数，将调用该函数来解析指定的接口
         /// </summary>
         /// <param name="interface">Interface to register</param>
         /// <param name="factory">Factory function</param>
@@ -57,62 +96,21 @@ namespace ConsoleApp2_FW
         /// <returns></returns>
         public IRegisteredType Register(Type @interface, Type implementation)
         {
-            return RegisterType(@interface, FactoryFromType(implementation));
+            return RegisterType(@interface, GetFirstConstructorFromType(implementation));
         }
 
-        private IRegisteredType RegisterType(Type itemType, Func<ILifetime, object> constructor)
+        private IRegisteredType RegisterType(Type itemType, Func<IObjectProvider, object> constructor)
         {
+            void Set_DicRegisteredTypesWithValue(Func<IObjectProvider, object> func)
+            {
+                Console.WriteLine($"类型:{(((object)itemType != null) ? itemType.ToString() : null)},对应的构造函数:{func.Method.Name},添加到词典:");
+                _RegisteredTypeDic[itemType] = func;
+            }
             //return new RegisteredType(itemType, f => _registeredTypesG[itemType] = f, constructor);
-            return new RegisteredType(itemType, f => Set_DicRegisteredTypesGlobalByValue(itemType, f), constructor);
+            //return new RegisteredType(itemType, f => Set_DicRegisteredTypesGlobalByValue(itemType, f), constructor);
+            return new RegisteredType(itemType, Set_DicRegisteredTypesWithValue, constructor);
         }
         #endregion
-
-
-        Func<ILifetime, object> Set_DicRegisteredTypesGlobalByKey(Type t)
-        {
-            Console.WriteLine("类型添加到词典" + (((object)t != null) ? t.ToString() : null));
-            return _DicRegisteredTypesGlobal[t];
-        }
-
-        void Set_DicRegisteredTypesGlobalByValue(Type itype, Func<ILifetime, object> func)
-        {
-            Console.WriteLine("类型对应的构造函数添加到词典" + (((object)itype != null) ? itype.ToString() : null));
-            _DicRegisteredTypesGlobal[itype] = func;
-        }
-
-        /// <summary>
-        /// Returns the object registered for the given type, if registered
-        /// </summary>
-        /// <param name="type">Type as registered with the container</param>
-        /// <returns>Instance of the registered type, if registered; otherwise <see langword="null"/></returns>
-        public object GetService(Type type)
-        {
-            Func<ILifetime, object> registeredType;
-
-            if (!_DicRegisteredTypesGlobal.TryGetValue(type, out registeredType))
-            {
-                return null;
-            }
-
-            return registeredType(_Lifetime);
-        }
-
-        /// <summary>
-        /// Creates a new scope
-        /// </summary>
-        /// <returns>Scope object</returns>
-        public IScope CreateScope()
-        {
-            return new ScopeLifetimeMgr(_Lifetime);
-        }
-
-        /// <summary>
-        /// Disposes any <see cref="IDisposable"/> objects owned by this container.
-        /// </summary>
-        public void Dispose()
-        {
-            return _Lifetime.Dispose();
-        }
 
         #endregion
 
@@ -123,7 +121,7 @@ namespace ConsoleApp2_FW
         /// </summary>
         /// <param name="itemType"></param>
         /// <returns></returns>
-        private static Func<ILifetime, object> FactoryFromType(Type itemType)
+        private static Func<IObjectProvider, object> GetFirstConstructorFromType(Type itemType)
         {
             // Get first constructor for the type
             var constructors = itemType.GetConstructors();
@@ -135,66 +133,63 @@ namespace ConsoleApp2_FW
             var constructor = constructors.First();
 
             // Compile constructor call as a lambda expression
-            var arg = Expression.Parameter(typeof(ILifetime));
-            //var exs = constructor.GetParameters().Select(
-            //        param =>
-            //        {
-            //            var resolve = new Func<ILifetime, object>(lifetime => GetFromLifeTime(lifetime, param.ParameterType));
-            //            var expresion2 = Expression.Call(Expression.Constant(resolve.Target), resolve.Method, arg);
-            //            return Expression.Convert(expresion2, param.ParameterType);
-            //        });
-            var ps = constructor.GetParameters();
-            List<Expression> exp2 = new List<Expression>();
-            foreach (var param in ps)
-            {
-                var resolve = new Func<ILifetime, object>(lifetime => GetInstanceFromLifeTimeByType(lifetime, param.ParameterType));
-                var expresion2 = Expression.Call(Expression.Constant(resolve.Target), resolve.Method, arg);
-                var unaryExp = Expression.Convert(expresion2, param.ParameterType);
-                exp2.Add(unaryExp);
-            }
-            Expression expression = Expression.New(constructor, exp2);
+            var arg = Expression.Parameter(typeof(IObjectProvider));
+            List<Expression> expressList = new List<Expression>();
+            var pArray = constructor.GetParameters();
 
-            var lambda = Expression.Lambda(expression, ("Lambda_express_") + itemType.Name, new[] { arg });
-            var func = (Func<ILifetime, object>)lambda.Compile();
+
+            foreach (var param in pArray)
+            {
+                object GetInstanceFromIObjProviderByType(IObjectProvider iObjProvider)
+                {
+                    return iObjProvider.GetService(param.ParameterType);
+                }
+                //var resolveFunc = new Func<IObjectProvider, object>(iobjProvider => GetInstanceFromIObjProviderByType(iobjProvider, param.ParameterType));
+                var resolveFunc = new Func<IObjectProvider, object>(GetInstanceFromIObjProviderByType);
+                var express = Expression.Call(Expression.Constant(resolveFunc.Target), resolveFunc.Method, arg);
+                var unaryExp = Expression.Convert(express, param.ParameterType);
+                expressList.Add(unaryExp);
+            }
+            Expression expression = Expression.New(constructor, expressList);
+
+            //var lambda = Expression.Lambda(expression, ("constructor_") + itemType.Name, new[] { arg });
+            var lambda = Expression.Lambda(expression, expression.ToString(), new[] { arg });
+            var func = (Func<IObjectProvider, object>)lambda.Compile();
             return func;
         }
 
-        static object GetInstanceFromLifeTimeByType(ILifetime ltime, Type tp)
-        {
-            return ltime.GetService(tp);
-        }
         #endregion
 
 
-        #region Public interfaces ;IScope ,ILifetime, IRegisteredType
+        #region Public interfaces 共3个: IScope ,IObjectProvider, IRegisteredType
         /// <summary>
         /// 表示某个时刻的范围对象的作用域
         /// </summary>
-        public interface IScope : IDisposable, IServiceProvider
+        public interface IBaseObjectProvider : IDisposable, IServiceProvider
         {
         }
 
         /// <summary>
         /// 给IScope对象提供生命周期管理策略
+        /// 获取Object/Service
         /// </summary>
-        interface ILifetime : IScope
+        interface IObjectProvider : IBaseObjectProvider
         {
-
             /// <summary>
-            /// 获取一个单例对象
+            /// 获取或者设置一个单例对象
             /// </summary>
             /// <param name="type"></param>
             /// <param name="factory"></param>
             /// <returns></returns>
-            object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory);
+            object GetServiceAsSingleton(Type type, Func<IObjectProvider, object> factory);
 
             /// <summary>
-            /// 获取一个作用域对象
+            /// 获取或设置一个作用域对象
             /// </summary>
             /// <param name="type"></param>
             /// <param name="factory"></param>
             /// <returns></returns>
-            object GetServicePerScope(Type type, Func<ILifetime, object> factory);
+            object GetServicePerScope(Type type, Func<IObjectProvider, object> factory);
         }
 
         /// <summary>
@@ -215,27 +210,33 @@ namespace ConsoleApp2_FW
         }
         #endregion
 
-
-
-        #region 其他成员对象 ,ObjectCache ,ContainerLifetime,RegisteredType,ScopeLifetimeMgr
+        #region 其他成员类型,共4个:  ObjectCacheProvider; SingleObjectProvider/ScopeObjectProvider:(ObjectCacheProvider,IObjectProvider); RegisteredType:IRegisteredType
 
         #region Lifetime management
         /// <summary>
-        /// 提供终身的缓存逻辑,添加或者获取,abstract
+        /// 提供缓存逻辑,添加或者获取,abstract类
         /// </summary>
-        abstract class ObjectCache
+        abstract class ObjectCacheProvider
         {
             /// <summary>
             /// 对象实例的缓存
             /// </summary>
-            private readonly ConcurrentDictionary<Type, object> _instanceCache = new ConcurrentDictionary<Type, object>();
+            public readonly ConcurrentDictionary<Type, object> _instanceCache = new ConcurrentDictionary<Type, object>();
 
             /// <summary>
             /// 添加或者获取缓存对象 
             /// </summary>
-            protected object GetCached(Type type, Func<ILifetime, object> constructor, ILifetime lifetime)
+            protected object GetCached(Type type, Func<IObjectProvider, object> constructor, IObjectProvider iobjProvider)
             {
-                return _instanceCache.GetOrAdd(type, _ => constructor(lifetime));
+                if (_instanceCache.ContainsKey(type))
+                {
+                    Console.WriteLine("▲ 从实例缓存字典中,获取到对象");
+                }
+                else
+                {
+                    Console.WriteLine("△ 实例缓存字典中,新增对象");
+                }
+                return _instanceCache.GetOrAdd(type, _ => constructor(iobjProvider));
             }
 
             public void Dispose()
@@ -246,30 +247,25 @@ namespace ConsoleApp2_FW
         }
 
         /// <summary>
-        /// 容器生命周期管理, 继承ObjectCache, ILifetime
+        /// 终生容器生命周期管理, ObjectCacheProvider, IObjectProvider
         /// </summary>
-        class ContainerLifetime : ObjectCache, ILifetime
+        class SingleObjectProvider : ObjectCacheProvider, IObjectProvider
         {
-            string LifetimeType = string.Empty;
-
             /// <summary>
             /// 获取给定类型中检索构造函数,由 包含它的容器提供
-            /// 使用的数据集合是 Container 中的 _registeredTypes constructor
+            /// 使用的数据集合是 Container 中的 _registeredTypeDic   
+            /// 使用的 GetConstructorFromDicByType 方法,获取生成对象的构造函数
             /// </summary>
-            public Func<Type, Func<ILifetime, object>> GetConstructorByType { get; private set; }
+            public Func<Type, Func<IObjectProvider, object>> GetConstructorByType { get; private set; }
 
-            public ContainerLifetime(Func<Type, Func<ILifetime, object>> getFactory)
+            public SingleObjectProvider(Func<Type, Func<IObjectProvider, object>> getFactory)
             {
                 GetConstructorByType = getFactory;
             }
-            //public ContainerLifetime( )
-            //{
-            //    GetFactory = GetRegisteredTypes;
-            //}
 
             public object GetService(Type type)
             {
-                Func<ILifetime, object> factory = GetConstructorByType(type);
+                Func<IObjectProvider, object> factory = GetConstructorByType(type);
                 return factory(this);
             }
 
@@ -277,11 +273,11 @@ namespace ConsoleApp2_FW
             /// 单例模式 获取缓存对象
             /// </summary>
             /// <param name="type"></param>
-            /// <param name="factory"></param>
+            /// <param name="constructor"></param>
             /// <returns></returns>
-            public object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory)
+            public object GetServiceAsSingleton(Type type, Func<IObjectProvider, object> constructor)
             {
-                return GetCached(type, factory, this);
+                return GetCached(type, constructor, this);
             }
 
             /// <summary>
@@ -291,7 +287,7 @@ namespace ConsoleApp2_FW
             /// <param name="type"></param>
             /// <param name="factory"></param>
             /// <returns></returns>
-            public object GetServicePerScope(Type type, Func<ILifetime, object> factory)
+            public object GetServicePerScope(Type type, Func<IObjectProvider, object> factory)
             {
                 return GetServiceAsSingleton(type, factory);
             }
@@ -300,29 +296,29 @@ namespace ConsoleApp2_FW
         /// <summary>
         /// 作用域管理
         /// </summary>
-        class ScopeLifetimeMgr : ObjectCache, ILifetime
+        class ScopeObjectProvider : ObjectCacheProvider, IObjectProvider
         {
             // Singletons come from parent container's lifetime
-            private readonly ContainerLifetime _parentLifetime;
+            private readonly SingleObjectProvider _parentObjectProvider;
 
-            public ScopeLifetimeMgr(ContainerLifetime parentContainer)
+            public ScopeObjectProvider(SingleObjectProvider parentObjectProvider)
             {
-                _parentLifetime = parentContainer;
+                _parentObjectProvider = parentObjectProvider;
             }
 
             public object GetService(Type type)
             {
-                return _parentLifetime.GetConstructorByType(type)(this);
+                return _parentObjectProvider.GetConstructorByType(type)(this);
             }
 
             // 单例解决方案委托给父辈的生命周期
-            public object GetServiceAsSingleton(Type type, Func<ILifetime, object> factory)
+            public object GetServiceAsSingleton(Type type, Func<IObjectProvider, object> factory)
             {
-                return _parentLifetime.GetServiceAsSingleton(type, factory);
+                return _parentObjectProvider.GetServiceAsSingleton(type, factory);
             }
 
             // Per-scope objects get cached
-            public object GetServicePerScope(Type type, Func<ILifetime, object> factory)
+            public object GetServicePerScope(Type type, Func<IObjectProvider, object> factory)
             {
                 return GetCached(type, factory, this);
             }
@@ -337,36 +333,51 @@ namespace ConsoleApp2_FW
         class RegisteredType : IRegisteredType
         {
             private readonly Type _itemType;
-            private readonly Action<Func<ILifetime, object>> _registerFactory;
-            private readonly Func<ILifetime, object> _constructor;
 
-            public RegisteredType(Type itemType, Action<Func<ILifetime, object>> registerFactory, Func<ILifetime, object> constructor)
+            private readonly Func<IObjectProvider, object> _constructor;
+
+            /// <summary>
+            /// Set_DicRegisteredTypesWithValue, object表示的是构造函数
+            /// </summary>
+            private readonly Action<Func<IObjectProvider, object>> _Set_DicRegisteredTypesWithValue;
+
+            public RegisteredType(Type itemType, Action<Func<IObjectProvider, object>> registerFactory, Func<IObjectProvider, object> constructor)
             {
                 _itemType = itemType;
-                _registerFactory = registerFactory;
                 _constructor = constructor;
-
+                _Set_DicRegisteredTypesWithValue = registerFactory;
+                //注册到 Container.DicRegisteredTypesGlobal
                 registerFactory(_constructor);
             }
 
             public void AsSingleton()
             {
-                _registerFactory(GetObjAsSingleton);
+                _Set_DicRegisteredTypesWithValue(GetObjAsSingleton);
+            }
+            /// <summary>
+            /// Func 
+            /// </summary>
+            /// <param name="ltime"></param>
+            /// <returns></returns>
+            object GetObjAsSingleton(IObjectProvider ltime)
+            {
+                return ltime.GetServiceAsSingleton(_itemType, _constructor);
             }
 
             public void AsScope()
             {
                 //_registerFactory(lifetime => lifetime.GetServicePerScope(_itemType, _constructor));
-                _registerFactory(GetObjPerScope);
+                _Set_DicRegisteredTypesWithValue(GetObjPerScope);
             }
 
-            object GetObjPerScope(ILifetime ltime)
+            /// <summary>
+            /// Func 
+            /// </summary>
+            /// <param name="iprovider"></param>
+            /// <returns></returns>
+            object GetObjPerScope(IObjectProvider iprovider)
             {
-                return ltime.GetServicePerScope(_itemType, _constructor);
-            }
-            object GetObjAsSingleton(ILifetime ltime)
-            {
-                return ltime.GetServiceAsSingleton(_itemType, _constructor);
+                return iprovider.GetServicePerScope(_itemType, _constructor);
             }
         }
         #endregion
@@ -435,7 +446,7 @@ namespace ConsoleApp2_FW
         /// <typeparam name="T">接口的类型</typeparam>
         /// <param name="scope">1个作用域实例</param>
         /// <returns>Object implementing the interface</returns>
-        public static T Resolve<T>(this Container.IScope scope)
+        public static T Resolve<T>(this Container.IBaseObjectProvider scope)
         {
             return (T)scope.GetService(typeof(T));
         }

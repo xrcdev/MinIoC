@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph DataVirtualized="True" GraphDirection="LeftToRight" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 @16 Member=(Name=FactoryFromType @17))" Category="CodeSchema_Method" Bounds="534,91.9999999999999,180,29.6" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" CommonLabel="FactoryFromType" Icon="CodeSchema_Method" Label="FactoryFromType" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=155 StartCharacterOffset=0 EndLineNumber=155 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@1 @2 @16 Member=(Name=Set_DicRegisteredTypesGlobalByKey @17))" Category="CodeSchema_Method" Bounds="973.199999999999,396,352.8,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="Set_DicRegisteredTypesGlobalByKey" Icon="CodeSchema_Method" Label="Set_DicRegisteredTypesGlobalByKey" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=80 StartCharacterOffset=0 EndLineNumber=80 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@1 @2 @16 Member=(Name=Set_DicRegisteredTypesGlobalByValue @25))" Category="CodeSchema_Method" Bounds="1384.8,152,372,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="Set_DicRegisteredTypesGlobalByValue" Icon="CodeSchema_Method" Label="Set_DicRegisteredTypesGlobalByValue" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=79 StartCharacterOffset=0 EndLineNumber=79 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@1 @2 @8 Member=(Name=.ctor OverloadingParameters=[(@1 @2 @9)]))" Category="CodeSchema_Method" Bounds="280.8,120,218.4,29.6" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="ScopeObjectProvider" Icon="CodeSchema_Method" Label="ScopeObjectProvider" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=318 StartCharacterOffset=0 EndLineNumber=318 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(@1 @2 @9 Member=(Name=.ctor OverloadingParameters=[(@10 @11 Type=(@12 GenericParameterCount=2 GenericArguments=[@13,@14]))]))" Category="CodeSchema_Method" Bounds="276,244,228,29.6" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="SingleObjectProvider" Icon="CodeSchema_Method" Label="SingleObjectProvider" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=254 StartCharacterOffset=0 EndLineNumber=254 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=&quot;System.Collections.Generic.Dictionary&lt;System.__Canon, System.__Canon&gt;.this[System.__Canon].get&quot; @43 Type=System.__Canon OverloadingParameters=[(Type=System.__Canon Name=key)] IsUnresolved=True)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="2571.6,198,64.8000000000002,29.6" Label="get">
+      <Category Ref="CallStackEntry" />
+    </Node>
+    <Node Id="(Name=ConsoleApp2_FW.Container.RegisterType.__Set_DicRegisteredTypesGlobalByValue|0 @42 Type=void OverloadingParameters=[(Type=&quot;System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, object&gt; {System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, ConsoleApp2_FW.Foo&gt;}&quot; Name=func)] IsUnresolved=True)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="944.4,32,410.4,29.6" Label="__Set_DicRegisteredTypesGlobalByValue|0" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=70 StartCharacterOffset=0 EndLineNumber=70 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="(Name=ConsoleApp2_FW.Container.RegisterType.__Set_DicRegisteredTypesGlobalByValue|0 @42 Type=void OverloadingParameters=[(Type=&quot;System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, object&gt;&quot; Name=func)] IsUnresolved=True)" Category="CodeSchema_CallStackUnresolvedMethod" Bounds="944.4,92,410.4,29.6" Label="__Set_DicRegisteredTypesGlobalByValue|0" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=68 StartCharacterOffset=0 EndLineNumber=68 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@15" Category="CodeSchema_Method" Bounds="0,166,74.4,29.6" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Main" Icon="CodeSchema_Method" Label="Main" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Program.cs StartLineNumber=84 StartCharacterOffset=0 EndLineNumber=84 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@18" Category="CodeSchema_Method" Bounds="2054.4,198,487.2,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="GetConstructorFromDicRegisteredTypesGlobalByKey" Icon="CodeSchema_Method" Label="GetConstructorFromDicRegisteredTypesGlobalByKey" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=80 StartCharacterOffset=0 EndLineNumber=80 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@19" Category="CodeSchema_Method" Bounds="763.2,272,132,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetService" Icon="CodeSchema_Method" Label="GetService" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=325 StartCharacterOffset=0 EndLineNumber=325 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@20" Category="CodeSchema_Method" Bounds="1839.6,152,132,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetService" Icon="CodeSchema_Method" Label="GetService" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=282 StartCharacterOffset=0 EndLineNumber=282 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@21" Category="CodeSchema_Method" Bounds="763.2,212,132,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetService" Icon="CodeSchema_Method" Label="GetService" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=100 StartCharacterOffset=0 EndLineNumber=100 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@24" Category="CodeSchema_Method" Bounds="333.6,0,112.8,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="Register" Icon="CodeSchema_Method" Label="Register" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=49 StartCharacterOffset=0 EndLineNumber=49 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@26" Category="CodeSchema_Method" Bounds="1452,244,237.6,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetServiceAsSingleton" Icon="CodeSchema_Method" Label="GetServiceAsSingleton" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=331 StartCharacterOffset=0 EndLineNumber=331 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@27" Category="CodeSchema_Method" Bounds="1786.8,290,237.6,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetServiceAsSingleton" Icon="CodeSchema_Method" Label="GetServiceAsSingleton" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=294 StartCharacterOffset=0 EndLineNumber=294 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@28" Category="CodeSchema_Method" Bounds="1801.2,382,208.8,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetServicePerScope" Icon="CodeSchema_Method" Label="GetServicePerScope" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=337 StartCharacterOffset=0 EndLineNumber=337 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@29" Category="CodeSchema_Method" Bounds="1466.4,336,208.8,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="GetServicePerScope" Icon="CodeSchema_Method" Label="GetServicePerScope" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=306 StartCharacterOffset=0 EndLineNumber=306 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@30" Category="CodeSchema_Method" Bounds="548.4,32,151.2,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="RegisterType" Icon="CodeSchema_Method" Label="RegisterType" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=67 StartCharacterOffset=0 EndLineNumber=67 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@31" Category="CodeSchema_Method" Bounds="1413.6,91.9999999999999,314.4,29.6" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" CommonLabel="GetInstanceFromLifeTimeByType" Icon="CodeSchema_Method" Label="GetInstanceFromLifeTimeByType" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=170 StartCharacterOffset=0 EndLineNumber=170 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@32" Category="CodeSchema_Method" Bounds="333.6,60,112.8,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="Register" Icon="CodeSchema_Method" Label="Register" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=62 StartCharacterOffset=0 EndLineNumber=62 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@33" Category="CodeSchema_Method" Bounds="2236.8,290,122.4,29.6" CodeSchemaProperty_IsProtected="True" CommonLabel="GetCached" Icon="CodeSchema_Method" Label="GetCached" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=246 StartCharacterOffset=0 EndLineNumber=246 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@34" Category="CodeSchema_Method" Bounds="744,32,170.4,29.6" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="RegisteredType" Icon="CodeSchema_Method" Label="RegisteredType" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=363 StartCharacterOffset=0 EndLineNumber=363 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@35" Category="CodeSchema_Method" Bounds="572.4,212,103.2,29.6" CodeSchemaProperty_IsExtension="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Resolve" Icon="CodeSchema_Method" Label="Resolve" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=455 StartCharacterOffset=0 EndLineNumber=455 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@36" Category="CodeSchema_Method" Bounds="118.8,0,112.8,29.6" CodeSchemaProperty_IsExtension="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Register" Icon="CodeSchema_Method" Label="Register" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=424 StartCharacterOffset=0 EndLineNumber=424 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@37" Category="CodeSchema_Method" Bounds="118.8,60,112.8,29.6" CodeSchemaProperty_IsExtension="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="Register" Icon="CodeSchema_Method" Label="Register" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=406 StartCharacterOffset=0 EndLineNumber=406 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@38" Category="CodeSchema_Method" Bounds="114,244,122.4,29.6" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CommonLabel="Container" Icon="CodeSchema_Method" Label="Container" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=34 StartCharacterOffset=0 EndLineNumber=34 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@39" Category="CodeSchema_Method" Bounds="1045.2,152,208.8,29.6" CodeSchemaProperty_IsAnonymous="True" Label="AnonymousMethod__0" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=155 StartCharacterOffset=0 EndLineNumber=155 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@40" Category="CodeSchema_Method" Bounds="777.6,152,103.2,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="AsScope" Icon="CodeSchema_Method" Label="AsScope" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=374 StartCharacterOffset=0 EndLineNumber=374 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@41" Category="CodeSchema_Method" Bounds="104.4,120,141.6,29.6" CodeSchemaProperty_IsPublic="True" CommonLabel="CreateScope" Icon="CodeSchema_Method" Label="CreateScope" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=111 StartCharacterOffset=0 EndLineNumber=111 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@6" Category="CodeSchema_Method" Bounds="1050,272,199.2,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="GetObjAsSingleton" Icon="CodeSchema_Method" Label="GetObjAsSingleton" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=384 StartCharacterOffset=0 EndLineNumber=384 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+    <Node Id="@7" Category="CodeSchema_Method" Bounds="1064.4,336,170.4,29.6" CodeSchemaProperty_IsPrivate="True" CommonLabel="GetObjPerScope" Icon="CodeSchema_Method" Label="GetObjPerScope" SourceLocation="(Assembly=file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/Container.cs StartLineNumber=380 StartCharacterOffset=0 EndLineNumber=380 EndCharacterOffset=0)">
+      <Category Ref="CallStackEntry" />
+      <Category Ref="CodeSchema_SourceLocation" />
+    </Node>
+  </Nodes>
+  <Links>
+    <Link Source="@15" Target="@35" Category="CallStackDirectCall" Bounds="74.4000015258789,189.426086425781,489.004356384277,35.4836730957031" />
+    <Link Source="@15" Target="@36" Category="CallStackDirectCall" Bounds="44.9917335510254,33.7119979858398,92.5965232849121,132.28800201416" />
+    <Link Source="@15" Target="@37" Category="CallStackDirectCall" Bounds="50.5522651672363,93.578483581543,86.5435600280762,72.421516418457" />
+    <Link Source="@15" Target="@38" Category="CallStackDirectCall" Bounds="63.3846168518066,195.600006103516,77.7956962585449,43.9714813232422" />
+    <Link Source="@15" Target="@40" Category="CallStackDirectCall" Bounds="74.4000015258789,170.933074951172,694.220848083496,9.86692810058594" />
+    <Link Source="@15" Target="@41" Category="CallStackDirectCall" Bounds="74.3431930541992,152.446044921875,47.9186553955078,15.9728851318359" />
+    <Link Source="@18" Target="(Name=&quot;System.Collections.Generic.Dictionary&lt;System.__Canon, System.__Canon&gt;.this[System.__Canon].get&quot; @43 Type=System.__Canon OverloadingParameters=[(Type=System.__Canon Name=key)] IsUnresolved=True)" Category="CallStackDirectCall" Bounds="2541.60009765625,212.800003051758,21,0" />
+    <Link Source="@19" Target="(@1 @2 @16 Member=(Name=Set_DicRegisteredTypesGlobalByKey @17))" Category="CallStackDirectCall" Bounds="867.441284179688,301.600006103516,235.524047851563,91.1516418457031" />
+    <Link Source="@19" Target="@18" Category="CallStackDirectCall" Bounds="892.910461425781,212.800003051758,1152.48956298828,59.2853546142578" />
+    <Link Source="@19" Target="@6" Category="CallStackDirectCall" Bounds="895.200012207031,286.799987792969,145.799987792969,0" />
+    <Link Source="@19" Target="@7" Category="CallStackDirectCall" Bounds="894.892944335938,299.922180175781,171.788940429688,34.3148803710938" />
+    <Link Source="@20" Target="@18" Category="CallStackDirectCall" Bounds="1971.59997558594,174.537002563477,191.210815429688,22.4151306152344" />
+    <Link Source="@21" Target="@39" Category="CallStackIndirectCall" Bounds="895.149169921875,183.256591796875,166.572631835938,31.1933746337891" />
+    <Link Source="@21" Target="@6" Category="CallStackDirectCall" Bounds="895.149169921875,239.150024414063,166.572631835938,31.1933898925781" />
+    <Link Source="@21" Target="@7" Category="CallStackDirectCall" Bounds="867.441284179688,241.600006103516,235.524047851563,91.1516418457031" />
+    <Link Source="@24" Target="@30" Category="CallStackDirectCall" Bounds="446.399993896484,22.5128211975098,93.0829772949219,12.7292976379395" />
+    <Link Source="@26" Target="@27" Category="CallStackDirectCall" Bounds="1678.51831054688,273.600006103516,110.447143554688,15.1749572753906" />
+    <Link Source="@27" Target="@33" Category="CallStackDirectCall" Bounds="2024.40002441406,304.799987792969,203.400024414063,0" />
+    <Link Source="@28" Target="@33" Category="CallStackDirectCall" Bounds="1968.72521972656,320.951934814453,260.383422851563,61.0480651855469" />
+    <Link Source="@29" Target="@27" Category="CallStackDirectCall" Bounds="1674.02319335938,320.825042724609,114.942260742188,15.7925415039063" />
+    <Link Source="@30" Target="@34" Category="CallStackDirectCall" Bounds="699.599975585938,46.7999992370605,35.4000244140625,0" />
+    <Link Source="@31" Target="@20" Category="CallStackDirectCall" Bounds="1653.38403320313,121.599998474121,177.357177734375,31.7844619750977" />
+    <Link Source="@32" Target="(@1 @2 @16 Member=(Name=FactoryFromType @17))" Category="CallStackDirectCall" Bounds="446.399993896484,82.5128173828125,78.7253112792969,10.7658538818359" />
+    <Link Source="@32" Target="@30" Category="CallStackDirectCall" Bounds="446.399993896484,56.9154472351074,93.0637512207031,11.1358375549316" />
+    <Link Source="@34" Target="(Name=ConsoleApp2_FW.Container.RegisterType.__Set_DicRegisteredTypesGlobalByValue|0 @42 Type=void OverloadingParameters=[(Type=&quot;System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, object&gt; {System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, ConsoleApp2_FW.Foo&gt;}&quot; Name=func)] IsUnresolved=True)" Category="CallStackDirectCall" Bounds="914.400024414063,46.7999992370605,21,0" />
+    <Link Source="@34" Target="@39" Category="CallStackDirectCall" Bounds="843.920227050781,61.5999984741211,192.304626464844,97.0890121459961" />
+    <Link Source="@35" Target="@19" Category="CallStackDirectCall" Bounds="673.783630371094,241.356628417969,96.1620483398438,28.1175537109375" />
+    <Link Source="@35" Target="@21" Category="CallStackDirectCall" Bounds="675.599975585938,226.800003051758,78.6000366210938,0" />
+    <Link Source="@36" Target="@24" Category="CallStackDirectCall" Bounds="231.600006103516,14.8000001907349,93,0" />
+    <Link Source="@37" Target="@32" Category="CallStackDirectCall" Bounds="231.600006103516,74.8000030517578,93,0" />
+    <Link Source="@38" Target="(@1 @2 @9 Member=(Name=.ctor OverloadingParameters=[(@10 @11 Type=(@12 GenericParameterCount=2 GenericArguments=[@13,@14]))]))" Category="CallStackDirectCall" Bounds="236.399993896484,258.799987792969,30.6000061035156,0" />
+    <Link Source="@39" Target="(@1 @2 @16 Member=(Name=Set_DicRegisteredTypesGlobalByValue @25))" Category="CallStackDirectCall" Bounds="1254,166.800003051758,121.800048828125,0" />
+    <Link Source="@39" Target="@31" Category="CallStackDirectCall" Bounds="1252.0810546875,122.869239807129,205.912841796875,29.3323135375977" />
+    <Link Source="@40" Target="(Name=ConsoleApp2_FW.Container.RegisterType.__Set_DicRegisteredTypesGlobalByValue|0 @42 Type=void OverloadingParameters=[(Type=&quot;System.Func&lt;ConsoleApp2_FW.Container.IObjectProvider, object&gt;&quot; Name=func)] IsUnresolved=True)" Category="CallStackDirectCall" Bounds="880.799987792969,123.25659942627,180.921813964844,33.880485534668" />
+    <Link Source="@40" Target="@39" Category="CallStackDirectCall" Bounds="880.799987792969,166.800003051758,155.399963378906,0" />
+    <Link Source="@41" Target="(@1 @2 @8 Member=(Name=.ctor OverloadingParameters=[(@1 @2 @9)]))" Category="CallStackDirectCall" Bounds="246,134.800003051758,25.7999877929688,0" />
+    <Link Source="@6" Target="@26" Category="CallStackDirectCall" Bounds="1249.19995117188,267.294403076172,193.81982421875,12.884521484375" />
+    <Link Source="@6" Target="@27" Category="CallStackDirectCall" Bounds="1249.19995117188,291.056396484375,528.60009765625,13.7435913085938" />
+    <Link Source="@7" Target="@28" Category="CallStackDirectCall" Bounds="1234.80004882813,360.104858398438,557.39990234375,36.6951293945313" />
+    <Link Source="@7" Target="@29" Category="CallStackDirectCall" Bounds="1234.80004882813,350.799987792969,222.599975585938,0" />
+  </Links>
+  <Categories>
+    <Category Id="CallStackDirectCall" Label="调用堆栈直接调用" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="调用堆栈直接调用" OutgoingActionLabel="调用堆栈直接调用" />
+    <Category Id="CallStackEntry" Label="调用堆栈入口" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="调用堆栈入口" />
+    <Category Id="CallStackIndirectCall" Label="调用堆栈间接调用" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="调用堆栈间接调用" OutgoingActionLabel="调用堆栈间接调用" />
+    <Category Id="CodeSchema_CallStackUnresolvedMethod" Label="未解析的方法" CanBeDataDriven="True" DefaultAction="Microsoft.AllOutBoundLinks" IsProviderRoot="False" NavigationActionLabel="未解析的方法" />
+    <Category Id="CodeSchema_Member" Label="编号" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="成员" />
+    <Category Id="CodeSchema_Method" Label="方法" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="方法" />
+    <Category Id="CodeSchema_SourceLocation" Label="源位置" Icon="File" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAnonymous" Label="是匿名的" Description="一个标志，用于指示此委托、类型或方法是否为匿名的" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsConstructor" Label="是构造函数" Description="一个标志，用于指示该方法是构造函数" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsExtension" Label="是扩展方法" Description="一个标志，用于指示该方法是否为扩展方法" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="是私有的" Description="一个标志，用于指示该范围是“私有”范围" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsProtected" Label="是受保护的" Description="一个标志，用于指示该范围是“受保护”范围" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="是公共的" Description="一个标志，用于指示该范围是“公共”范围" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsStatic" Label="是静态的" Description="一个标志，用于指示该成员是静态成员" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DataVirtualized" Label="已虚拟化数据" Description="如果为 true，则图中可以包含表示虚拟化节点/链接(即，不在图中实际创建)的数据的节点和链接。" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="图标" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="起始行号" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="ArrayRank" Label="数组秩" ValueType="System.String" />
+    <Name Id="Assembly" Label="程序集" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="泛型实参" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" />
+    <Name Id="GenericParameterCount" Label="泛型形参计数" ValueType="System.String" />
+    <Name Id="IsUnresolved" Label="是无法解析的" ValueType="System.String" />
+    <Name Id="Member" Label="编号" ValueType="System.Object" />
+    <Name Id="Name" Label="名称" ValueType="System.String" />
+    <Name Id="Namespace" Label="命名空间" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="参数" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="ParameterIdentifier" Label="参数标识符" ValueType="System.String" />
+    <Name Id="ParentType" Label="父类型" ValueType="System.Object" />
+    <Name Id="Type" Label="类型" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(2e3db50c-b13f-488e-ae94-0cbe997794cd.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=ConsoleApp2_FW" />
+    <Alias n="3" Id="ParentType=Container" />
+    <Alias n="4" Id="Type=(Name=RegisteredType @3)" />
+    <Alias n="5" Id="(@1 @2 Type=(Name=IObjectProvider @3))" />
+    <Alias n="6" Id="(@1 @2 @4 Member=(Name=GetObjAsSingleton OverloadingParameters=[@5]))" />
+    <Alias n="7" Id="(@1 @2 @4 Member=(Name=GetObjPerScope OverloadingParameters=[@5]))" />
+    <Alias n="8" Id="Type=(Name=ScopeObjectProvider @3)" />
+    <Alias n="9" Id="Type=(Name=SingleObjectProvider @3)" />
+    <Alias n="10" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.7.2/mscorlib.dll" />
+    <Alias n="11" Id="Namespace=System" />
+    <Alias n="12" Id="Name=Func" />
+    <Alias n="13" Id="(@10 @11 Type=Type)" />
+    <Alias n="14" Id="(@10 @11 Type=(@12 GenericParameterCount=2 GenericArguments=[@5,(@10 @11 Type=Object)]))" />
+    <Alias n="15" Id="(@1 @2 Type=Program Member=(Name=Main OverloadingParameters=[(@10 @11 Type=(Name=String ArrayRank=1 ParentType=String))]))" />
+    <Alias n="16" Id="Type=Container" />
+    <Alias n="17" Id="OverloadingParameters=[@13]" />
+    <Alias n="18" Id="(@1 @2 @16 Member=(Name=GetConstructorFromDicRegisteredTypesGlobalByKey @17))" />
+    <Alias n="19" Id="(@1 @2 @8 Member=(Name=GetService @17))" />
+    <Alias n="20" Id="(@1 @2 @9 Member=(Name=GetService @17))" />
+    <Alias n="21" Id="(@1 @2 @16 Member=(Name=GetService @17))" />
+    <Alias n="22" Id="Name=Register" />
+    <Alias n="23" Id="GenericParameterCount=1" />
+    <Alias n="24" Id="(@1 @2 @16 Member=(@22 OverloadingParameters=[@13,(@10 @11 Type=(@12 @23 GenericArguments=[(@10 @11 Type=Object)]))]))" />
+    <Alias n="25" Id="OverloadingParameters=[@13,@14]" />
+    <Alias n="26" Id="(@1 @2 @8 Member=(Name=GetServiceAsSingleton @25))" />
+    <Alias n="27" Id="(@1 @2 @9 Member=(Name=GetServiceAsSingleton @25))" />
+    <Alias n="28" Id="(@1 @2 @8 Member=(Name=GetServicePerScope @25))" />
+    <Alias n="29" Id="(@1 @2 @9 Member=(Name=GetServicePerScope @25))" />
+    <Alias n="30" Id="(@1 @2 @16 Member=(Name=RegisterType @25))" />
+    <Alias n="31" Id="(@1 @2 @16 Member=(Name=GetInstanceFromLifeTimeByType OverloadingParameters=[@5,@13]))" />
+    <Alias n="32" Id="(@1 @2 @16 Member=(@22 OverloadingParameters=[@13,@13]))" />
+    <Alias n="33" Id="(@1 @2 Type=(Name=ObjectCacheProvider @3) Member=(Name=GetCached OverloadingParameters=[@13,@14,@5]))" />
+    <Alias n="34" Id="(@1 @2 @4 Member=(Name=.ctor OverloadingParameters=[@13,(@10 @11 Type=(Name=Action @23 GenericArguments=[@14])),@14]))" />
+    <Alias n="35" Id="(@1 @2 Type=ContainerExtensions Member=(Name=Resolve @23 OverloadingParameters=[(@1 @2 Type=(Name=IScope @3))]))" />
+    <Alias n="36" Id="(@1 @2 Type=ContainerExtensions Member=(@22 @23 OverloadingParameters=[(@1 @2 @16),(@10 @11 Type=(@12 @23 GenericArguments=[(ParameterIdentifier=0)]))]))" />
+    <Alias n="37" Id="(@1 @2 Type=ContainerExtensions Member=(@22 @23 OverloadingParameters=[(@1 @2 @16),@13]))" />
+    <Alias n="38" Id="(@1 @2 @16 Member=.ctor)" />
+    <Alias n="39" Id="(@1 @2 @16 Member=AnonymousMethod__0)" />
+    <Alias n="40" Id="(@1 @2 @4 Member=AsScope)" />
+    <Alias n="41" Id="(@1 @2 @16 Member=CreateScope)" />
+    <Alias n="42" Uri="Assembly=ConsoleApp2_FW.exe" />
+    <Alias n="43" Uri="Assembly=mscorlib.dll" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Link" GroupLabel="Current Call Stack Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CurrentCallStackCall')" />
+      <Setter Property="Stroke" Value="#FFD93701" />
+      <Setter Property="Weight" Value="1" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Call Stack Indirect Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CallStackIndirectCall')" />
+      <Setter Property="Stroke" Value="#FFB8B8B8" />
+      <Setter Property="StrokeDashArray" Value="4 1" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Call Stack Direct Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CallStackDirectCall')" />
+      <Setter Property="Stroke" Value="#FFB8B8B8" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="当前调用堆栈(无源)" ValueLabel="True">
+      <Condition Expression="HasCategory('CurrentCallStackEntry') And !HasCategory('CodeSchema_SourceLocation')" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="#FFA5A5A5" />
+      <Setter Property="Stroke" Value="#FF0072C6" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="External And Current" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('ExternalCallStackEntry') And HasCategory('CurrentCallStackEntry')" />
+      <Setter Property="Background" Value="#FFFFF8F0" />
+      <Setter Property="Stroke" Value="#FFCE5100" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="当前调用堆栈(源)" ValueLabel="True">
+      <Condition Expression="HasCategory('CurrentCallStackEntry') And !HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFFFE3C6" />
+      <Setter Property="Stroke" Value="#FFD93701" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="外部调用堆栈" ValueLabel="True">
+      <Condition Expression="HasCategory('ExternalCallStackEntry')" />
+      <Setter Property="Background" Value="#FFF7F7F7" />
+      <Setter Property="StrokeDashArray" Value="1 3" />
+      <Setter Property="Foreground" Value="#FF717171" />
+      <Setter Property="Stroke" Value="#FFA5A5A5" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="结果" ValueLabel="True">
+      <Condition Expression="HasCategory('QueryResult')" />
+      <Setter Property="Background" Value="#FFBCFFBE" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="测试项目" ValueLabel="测试项目">
+      <Condition Expression="HasCategory('CodeMap_TestProject')" />
+      <Setter Property="Icon" Value="CodeMap_TestProject" />
+      <Setter Property="Background" Value="#FF307A69" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Web 项目" ValueLabel="Web 项目">
+      <Condition Expression="HasCategory('CodeMap_WebProject')" />
+      <Setter Property="Icon" Value="CodeMap_WebProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Windows 应用商店项目" ValueLabel="Windows 应用商店项目">
+      <Condition Expression="HasCategory('CodeMap_WindowsStoreProject')" />
+      <Setter Property="Icon" Value="CodeMap_WindowsStoreProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="电话项目" ValueLabel="电话项目">
+      <Condition Expression="HasCategory('CodeMap_PhoneProject')" />
+      <Setter Property="Icon" Value="CodeMap_PhoneProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="可移植库" ValueLabel="可移植库">
+      <Condition Expression="HasCategory('CodeMap_PortableLibraryProject')" />
+      <Setter Property="Icon" Value="CodeMap_PortableLibraryProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="WPF 项目" ValueLabel="WPF 项目">
+      <Condition Expression="HasCategory('CodeMap_WpfProject')" />
+      <Setter Property="Icon" Value="CodeMap_WpfProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="VSIX 项目" ValueLabel="VSIX 项目">
+      <Condition Expression="HasCategory('CodeMap_VsixProject')" />
+      <Setter Property="Icon" Value="CodeMap_VsixProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="建模项目" ValueLabel="建模项目">
+      <Condition Expression="HasCategory('CodeMap_ModelingProject')" />
+      <Setter Property="Icon" Value="CodeMap_ModelingProject" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="程序集" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#FF094167" />
+      <Setter Property="Stroke" Value="#FF094167" />
+      <Setter Property="Icon" Value="CodeSchema_Assembly" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="命名空间" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF0E619A" />
+      <Setter Property="Stroke" Value="#FF0E619A" />
+      <Setter Property="Icon" Value="CodeSchema_Namespace" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="接口" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Interface" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="结构" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Struct')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Struct" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="枚举" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Enum" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="委托" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Delegate')" />
+      <Setter Property="Background" Value="#FF1382CE" />
+      <Setter Property="Stroke" Value="#FF1382CE" />
+      <Setter Property="Icon" Value="CodeSchema_Delegate" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="类" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#FF0E70C0" />
+      <Setter Property="Stroke" Value="#FF0E70C0" />
+      <Setter Property="Icon" Value="CodeSchema_Class" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="属性" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Property')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Property" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="方法" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Method') Or HasCategory('CodeSchema_CallStackUnresolvedMethod')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Method" />
+      <Setter Property="LayoutSettings" Value="List" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="事件" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Event')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Event" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="字段" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Field')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+      <Setter Property="Stroke" Value="#FFE0E0E0" />
+      <Setter Property="Icon" Value="CodeSchema_Field" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Out 参数" ValueLabel="具有类别">
+      <Condition Expression="CodeSchemaProperty_IsOut = 'True'" />
+      <Setter Property="Icon" Value="CodeSchema_OutParameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="参数" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_Parameter')" />
+      <Setter Property="Icon" Value="CodeSchema_Parameter" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="局部变量" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('CodeSchema_LocalExpression')" />
+      <Setter Property="Icon" Value="CodeSchema_LocalExpression" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="外部" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FF424242" />
+      <Setter Property="Stroke" Value="#FF424242" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="继承自" ValueLabel="True">
+      <Condition Expression="HasCategory('InheritsFrom')" />
+      <Setter Property="Stroke" Value="#FF00A600" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="实现" ValueLabel="True">
+      <Condition Expression="HasCategory('Implements')" />
+      <Setter Property="Stroke" Value="#8000A600" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="调用" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Calls')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 0" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="函数指针" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FunctionPointer')" />
+      <Setter Property="Stroke" Value="#FFFF00FF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="字段读取" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldRead')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="字段写入" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_FieldWrite')" />
+      <Setter Property="Stroke" Value="#FF00AEEF" />
+      <Setter Property="DrawArrow" Value="true" />
+      <Setter Property="IsHidden" Value="false" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Inherits From" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('InheritsFrom') And Target.HasCategory('CodeSchema_Class')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('Implements') And Target.HasCategory('CodeSchema_Interface')" />
+      <Setter Property="TargetDecorator" Value="OpenArrow" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Comment Link" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="Source.HasCategory('Comment')" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Cursor Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCursorLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Disabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="DisabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Enabled Breakpoint Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="EnabledBreakpointCount" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Instruction Pointer Location Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsInstructionPointerLocation" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Current Callstack Changed" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="IsCurrentCallstackFrame" />
+      <Setter Property="IndicatorWest" Value="WestIndicator" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="返回" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_ReturnTypeLink')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="引用" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('References')" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="使用特性" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeSchema_AttributeUse')" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="解决方案文件夹" ValueLabel="True" Visibility="Hidden">
+      <Condition Expression="HasCategory('CodeMap_SolutionFolder')" />
+      <Setter Property="Background" Value="#FFDEBA83" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="项目引用" ValueLabel="项目引用">
+      <Condition Expression="HasCategory('CodeMap_ProjectReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="外部引用" ValueLabel="外部引用">
+      <Condition Expression="HasCategory('CodeMap_ExternalReference')" />
+      <Setter Property="Stroke" Value="#9A9A9A" />
+      <Setter Property="StrokeDashArray" Value="2 2" />
+      <Setter Property="DrawArrow" Value="true" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="2e3db50c-b13f-488e-ae94-0cbe997794cd.OutputPathUri" Value="file:///G:/Git_Repo/MinIoC/ConsoleApp2_FW/bin/Debug/ConsoleApp2_FW.exe" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+  </Paths>
+</DirectedGraph>
