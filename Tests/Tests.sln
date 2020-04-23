@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1_core", "..\Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2_FW", "..\ConsoleApp2_FW\ConsoleApp2_FW.csproj", "{2E3DB50C-B13F-488E-AE94-0CBE997794CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyIoc", "..\MyIoc\MyIoc.csproj", "{F492BFC5-0D8E-43ED-99A1-08516E044D01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2E3DB50C-B13F-488E-AE94-0CBE997794CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E3DB50C-B13F-488E-AE94-0CBE997794CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E3DB50C-B13F-488E-AE94-0CBE997794CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F492BFC5-0D8E-43ED-99A1-08516E044D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F492BFC5-0D8E-43ED-99A1-08516E044D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F492BFC5-0D8E-43ED-99A1-08516E044D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F492BFC5-0D8E-43ED-99A1-08516E044D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

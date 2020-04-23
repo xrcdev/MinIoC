@@ -348,39 +348,27 @@ namespace ConsoleApp2_FW
                 _itemType = itemType;
                 _constructor = constructor;
                 _Set_DicRegisteredTypesWithValue = registerFactory;//constructor
-                //注册到 Container.DicRegisteredTypesGlobal
-                registerFactory(_constructor);
+                registerFactory(_constructor); //注册到 Container.DicRegisteredTypesGlobal
             }
 
             public void AsSingleton()
             {
                 _Set_DicRegisteredTypesWithValue(GetObjAsSingleton);
-            }
-
-            /// <summary>
-            /// Func 
-            /// </summary>
-            /// <param name="ltime"></param>
-            /// <returns></returns>
-            object GetObjAsSingleton(IObjectProvider ltime)
-            {
-                return ltime.GetServiceAsSingleton(_itemType, _constructor);
+                object GetObjAsSingleton(IObjectProvider ltime)
+                {
+                    //ltime 是 singleObjectProvider
+                    return ltime.GetServiceAsSingleton(_itemType, _constructor);
+                }
             }
 
             public void AsScope()
             {
-                //_registerFactory(lifetime => lifetime.GetServicePerScope(_itemType, _constructor));
+                object GetObjPerScope(IObjectProvider iprovider)
+                {
+                    return iprovider.GetServicePerScope(_itemType, _constructor);
+                }
                 _Set_DicRegisteredTypesWithValue(GetObjPerScope);
-            }
-
-            /// <summary>
-            /// Func 
-            /// </summary>
-            /// <param name="iprovider"></param>
-            /// <returns></returns>
-            object GetObjPerScope(IObjectProvider iprovider)
-            {
-                return iprovider.GetServicePerScope(_itemType, _constructor);
+                //_registerFactory(lifetime => lifetime.GetServicePerScope(_itemType, _constructor));
             }
         }
         #endregion

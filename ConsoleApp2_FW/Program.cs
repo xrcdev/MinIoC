@@ -56,28 +56,18 @@ namespace ConsoleApp2_FW
 
             Container container1 = new Container();
 
-            //container1.Register<IFoo>(() => new Foo()).AsSingleton();
-            //var oScope2 = container1.Resolve<IFoo>();
-            //Console.WriteLine($"{nameof(container1)},{nameof(oScope2)} hashcode:".PadRight(35, '\0') + oScope2.GetHashCode().ToString());
-            //container1.Register<IFoo>(typeof(Foo)).AsSingleton();//▲
-            //container1.Register<IFoo>(typeof(Foo)).AsScope();//▲
-            container1.Register<IFoo>(typeof(Foo));//▲
-            var foo1 = container1.Resolve<IFoo>();
-            using (var scope = container1.CreateScope())
-            {
-                var foo2 = scope.Resolve<IFoo>();
-                Console.WriteLine($"■ {nameof(foo1)} object.ReferenceEquals {nameof(foo2)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo1, foo2)).ToString());
+            //var foo1 = container1.Resolve<IFoo>();
+            //using (var scope = container1.CreateScope())
+            //{
+            //    var foo2 = scope.Resolve<IFoo>();
+            //    Console.WriteLine($"■ {nameof(foo1)} object.ReferenceEquals {nameof(foo2)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo1, foo2)).ToString());
 
-                var foo3 = scope.Resolve<IFoo>();
-                Console.WriteLine($"■ {nameof(foo2)} object.ReferenceEquals {nameof(foo3)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo2, foo3)).ToString());
-            }
-            var foo4 = container1.Resolve<IFoo>();
-            Console.WriteLine($"■ {nameof(foo1)} object.ReferenceEquals {nameof(foo4)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo1, foo4)).ToString());
-            Console.WriteLine($"{Environment.NewLine}");
-
-            //Console.WriteLine($"{nameof(container1)},{nameof(foo1)} hashcode:".PadRight(35, '\0') + foo1.GetHashCode().ToString());
-            //Console.WriteLine($"{nameof(container1)},{nameof(foo1)} object.ReferenceEquals {nameof(oScope2)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo1, oScope2)).ToString());
-
+            //    var foo3 = scope.Resolve<IFoo>();
+            //    Console.WriteLine($"■ {nameof(foo2)} object.ReferenceEquals {nameof(foo3)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo2, foo3)).ToString());
+            //}
+            //var foo4 = container1.Resolve<IFoo>();
+            //Console.WriteLine($"■ {nameof(foo1)} object.ReferenceEquals {nameof(foo4)} :".PadRight(35, '\0') + (object.ReferenceEquals(foo1, foo4)).ToString());
+            //Console.WriteLine($"{Environment.NewLine}");
 
             container1.Register<IA>(typeof(A)).AsScope();//▲
             var a1 = container1.Resolve<IA>();
