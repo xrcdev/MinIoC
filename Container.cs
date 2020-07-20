@@ -11,7 +11,7 @@ namespace Microsoft.MinIoC
 {
 
     /// <summary>
-    /// 控制容器的反转处理已注册类型的依赖项注入
+    /// 控制容器的反转处理已注册类型的依赖项注入 1
     /// Inversion of control container handles dependency injection for registered types
     /// </summary>
     public class Container : Container.IScope

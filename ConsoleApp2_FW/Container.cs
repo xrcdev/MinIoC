@@ -130,8 +130,10 @@ namespace ConsoleApp2_FW
                 // If no public constructor found, search for an internal constructor
                 constructors = itemType.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);
             }
-            var constructor = constructors.First();
+            //var constructor = constructors.FirstOrDefault(it => it.GetCustomAttributes(false).OfType<InjectionAttribute>().Any());
 
+            var constructor = constructors.First();
+           
             // Compile constructor call as a lambda expression
             var arg = Expression.Parameter(typeof(IObjectProvider));
             List<Expression> expressList = new List<Expression>();
